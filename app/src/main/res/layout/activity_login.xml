@@ -61,6 +61,16 @@
             android:text="LOG IN"
             android:background="@drawable/bd_rectangle_button"/>
 
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="REGISTER"
+            android:background="@drawable/bd_rectangle_button"/>
+
     </LinearLayout>
 
 </RelativeLayout>

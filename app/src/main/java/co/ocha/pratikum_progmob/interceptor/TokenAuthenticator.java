@@ -1,5 +1,6 @@
 package co.ocha.pratikum_progmob.interceptor;
 
+import android.content.Context;
 import android.content.Intent;
 
 import java.io.IOException;
@@ -19,16 +20,18 @@ import retrofit2.Retrofit;
 public class TokenAuthenticator implements Interceptor {
 
     SharedPrefed sharedPrefed;
+    Context mcontext;
 
-    public TokenAuthenticator(){
-        sharedPrefed = new SharedPrefed(MyApp.getContext());
+    public TokenAuthenticator(Context context){
+        this.mcontext = context;
+        sharedPrefed = new SharedPrefed(context);
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
         Response mainResponse = chain.proceed(chain.request());
         Request mainRequest = chain.request();
-        ApiInterface apiInterface = RetrofitClient.getClient().create(ApiInterface.class);
+        ApiInterface apiInterface = RetrofitClient.getClient(mcontext).create(ApiInterface.class);
 
         if(mainResponse.code() == 401 || mainResponse.code() == 403){
             String token = sharedPrefed.getSPToken();

@@ -2,6 +2,9 @@ package co.ocha.pratikum_progmob.SharedPrefed;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+
+import java.io.Console;
 
 public class SharedPrefed {
     public static final String SP_LOGIN_APP = "spLoginApp";
@@ -16,7 +19,7 @@ public class SharedPrefed {
     SharedPreferences.Editor spEditor;
 
     public SharedPrefed(Context context) {
-        this.sp = context.getSharedPreferences(SP_LOGIN_APP,Context.MODE_PRIVATE);
+        this.sp = context.getSharedPreferences(SP_LOGIN_APP, Context.MODE_PRIVATE);
         this.spEditor = sp.edit();
     }
 

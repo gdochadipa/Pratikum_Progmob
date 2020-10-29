@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         context = this;
 
         ButterKnife.bind(this);
-        apiInterface = RetrofitClient.getClient().create(ApiInterface.class);
+        apiInterface = RetrofitClient.getClient(this.context).create(ApiInterface.class);
         sharedPrefed = new SharedPrefed(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading");
@@ -86,5 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
+    }
+
+    @OnClick(R.id.btnRegister)void toRegister(){
+        startActivity(new Intent(context, RegisterActivity.class));
     }
 }
