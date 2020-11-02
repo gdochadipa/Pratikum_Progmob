@@ -14,11 +14,13 @@ import com.google.gson.Gson;
 import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import co.ocha.pratikum_progmob.model.Message;
 import co.ocha.pratikum_progmob.model.QueryResponse;
 import co.ocha.pratikum_progmob.model.RegisterResponse;
 import co.ocha.pratikum_progmob.remote.ApiInterface;
@@ -77,17 +79,37 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                     progressDialog.dismiss();
-//                    if(response.code() == 200){
-//                        Toast.makeText(getApplicationContext()," Register berhasil, silahkan login",Toast.LENGTH_LONG).show();
-//                        Log.d("RESPONSE", "onResponse: "+response.message().toString());
-//                        startActivity(new Intent(context, LoginActivity.class)
-//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-//
-//                    }
+                    if(response.code() == 200){
+                        Toast.makeText(getApplicationContext()," Register berhasil, silahkan login",Toast.LENGTH_LONG).show();
+                        Log.d("RESPONSE", "onResponse: "+response.message().toString());
+                        startActivity(new Intent(context, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                    }
                     //php artisan serve --host 0.0.0.0
                     try {
-                        if(response.body()!=null){
-                            Toast.makeText(getApplicationContext()," response message body" + response.body().toString(),Toast.LENGTH_LONG).show();
+                        if(response.body()!=null && response.body().getStatus().matches("error")){
+                            Message message = response.body().getMessage();
+                            if(!message.getCPassword().isEmpty()){
+                                Toast.makeText(getApplicationContext(),message.getCPassword().toString(),Toast.LENGTH_LONG).show();
+                                txtPasswordCheck.requestFocus();
+                                txtPasswordCheck.setError(message.getCPassword().toString());
+                            }
+                            if (!message.getPassword().isEmpty()){
+                                Toast.makeText(getApplicationContext(),message.getPassword().toString(),Toast.LENGTH_LONG).show();
+                                txtPassword.requestFocus();
+                                txtPassword.setError(message.getPassword().toString());
+                            }
+                            if (!message.getEmail().isEmpty()){
+                                Toast.makeText(getApplicationContext(),message.getEmail().toString(),Toast.LENGTH_LONG).show();
+                                txtEmail.requestFocus();
+                                txtEmail.setError(message.getEmail().toString());
+                            }
+                            if (!message.getName().isEmpty()){
+                                Toast.makeText(getApplicationContext(),message.getName().toString(),Toast.LENGTH_LONG).show();
+                                txtName.requestFocus();
+                                txtName.setError(message.getName().toString());
+                            }
                         }if(response.errorBody()!=null) {
                             Toast.makeText(getApplicationContext(), response.errorBody().string(),Toast.LENGTH_LONG).show();
                             RegisterResponse registerResponse = new Gson().fromJson(response.errorBody().string(),RegisterResponse.class);
@@ -117,10 +139,6 @@ public class RegisterActivity extends AppCompatActivity {
             valid = false;
             txtName.requestFocus();
             txtName.setError("Nama tidak boleh kosong");
-        }else if(txtName.getText().toString().matches("[a-zA-Z ]+")){
-            valid = false;
-            txtName.requestFocus();
-            txtName.setError("Hanya boleh memasukan huruf");
         }
 
         if(txtEmail.getText().toString().length()==0){
@@ -133,13 +151,13 @@ public class RegisterActivity extends AppCompatActivity {
             txtEmail.setError("Hanya boleh memasukan huruf");
         }
 
-        if(txtPassword.getText().toString().length()>=6){
+        if(txtPassword.getText().toString().length()<=6){
             valid = false;
             txtPassword.requestFocus();
-            txtPassword.setError("Password harus diatas 6 karakter");
+            txtPassword.setError("Password harus 6 karakter lebih");
         }
 
-        if(txtPassword.getText().toString().equals(txtPasswordCheck.getText().toString())){
+        if(txtPassword.getText().toString() == txtPasswordCheck.getText().toString()){
             valid = false;
             txtPasswordCheck.requestFocus();
             txtPasswordCheck.setError("Password harus sama ");

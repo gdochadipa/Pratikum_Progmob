@@ -30,6 +30,9 @@ public interface ApiInterface {
     );
 
     @GET("api/user/detail")
+    Call<UserResponse> getUser(@Header("Authorization") String token);
+
+    @GET("api/user/token")
     Call<TokenResponse> refreshToken(@Header("Authorization") String token);
 
 }

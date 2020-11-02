@@ -1,81 +1,28 @@
 package co.ocha.pratikum_progmob.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserResponse{
-	private String updatedAt;
-	private String imageProfile;
-	private String name;
-	private String createdAt;
-	private Object emailVerifiedAt;
-	private int id;
-	private String email;
 
-	public void setUpdatedAt(String updatedAt){
-		this.updatedAt = updatedAt;
+	@SerializedName("result")
+	private UserResult result;
+
+	@SerializedName("status")
+	private String status;
+
+	public void setResult(UserResult result){
+		this.result = result;
 	}
 
-	public String getUpdatedAt(){
-		return updatedAt;
+	public UserResult getResult(){
+		return result;
 	}
 
-	public void setImageProfile(String imageProfile){
-		this.imageProfile = imageProfile;
+	public void setStatus(String status){
+		this.status = status;
 	}
 
-	public String getImageProfile(){
-		return imageProfile;
+	public String getStatus(){
+		return status;
 	}
-
-	public void setName(String name){
-		this.name = name;
-	}
-
-	public String getName(){
-		return name;
-	}
-
-	public void setCreatedAt(String createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public String getCreatedAt(){
-		return createdAt;
-	}
-
-	public void setEmailVerifiedAt(Object emailVerifiedAt){
-		this.emailVerifiedAt = emailVerifiedAt;
-	}
-
-	public Object getEmailVerifiedAt(){
-		return emailVerifiedAt;
-	}
-
-	public void setId(int id){
-		this.id = id;
-	}
-
-	public int getId(){
-		return id;
-	}
-
-	public void setEmail(String email){
-		this.email = email;
-	}
-
-	public String getEmail(){
-		return email;
-	}
-
-	@Override
- 	public String toString(){
-		return 
-			"Response{" + 
-			"updated_at = '" + updatedAt + '\'' + 
-			",image_profile = '" + imageProfile + '\'' + 
-			",name = '" + name + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
-			",email_verified_at = '" + emailVerifiedAt + '\'' + 
-			",id = '" + id + '\'' + 
-			",email = '" + email + '\'' + 
-			"}";
-		}
 }

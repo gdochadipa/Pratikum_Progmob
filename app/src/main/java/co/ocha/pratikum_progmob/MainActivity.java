@@ -6,15 +6,21 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
+import co.ocha.pratikum_progmob.remote.ApiInterface;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+
+    ApiInterface apiInterface;
+    SharedPrefed sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPrefManager = new SharedPrefed(this);
     }
 
     @Override
