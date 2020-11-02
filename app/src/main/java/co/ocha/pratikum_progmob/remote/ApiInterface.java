@@ -35,4 +35,7 @@ public interface ApiInterface {
     @GET("api/user/token")
     Call<TokenResponse> refreshToken(@Header("Authorization") String token);
 
+    @POST("api/logout")
+    Call<TokenResponse> logout(@Header("Authorization") String token);
+
 }
