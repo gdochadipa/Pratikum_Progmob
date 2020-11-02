@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "936498670713",
+    "firebase_url": "https://progmob-pratikum-7.firebaseio.com",
+    "project_id": "progmob-pratikum-7",
+    "storage_bucket": "progmob-pratikum-7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936498670713:android:749bad1056d5071f3d78a8",
+        "android_client_info": {
+          "package_name": "co.ocha.pratikum_progmob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936498670713-33juteukj61l0dkntjq2q8k04donor6c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzxBjWQyEiCwa0qy8NOJTqMPYR1WZDzfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936498670713-33juteukj61l0dkntjq2q8k04donor6c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
