@@ -79,12 +79,18 @@ public class LoginActivity extends AppCompatActivity {
                     progressDialog.dismiss();
 
                     if(response.code() == 200 ){
-                        TokenResult token = response.body().getResult();
-                        sharedPrefed.saveSPString(SharedPrefed.SP_TOKEN,"Bearer "+token.getToken());
-                        sharedPrefed.saveSPBoolean(SharedPrefed.SP_SUDAH_LOGIN,true);
-                        startActivity(new Intent(context, MainActivity.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                        finish();
+                        Log.d(TAG, "onResponse: "+response.code());
+                        if(response.body().getStatus() == "error"){
+                            Toast.makeText(context,response.body().getResult().toString() , Toast.LENGTH_SHORT).show();
+                        }else{
+                            TokenResult token = response.body().getResult();
+                            sharedPrefed.saveSPString(SharedPrefed.SP_TOKEN,"Bearer "+token.getToken());
+                            sharedPrefed.saveSPBoolean(SharedPrefed.SP_SUDAH_LOGIN,true);
+                            startActivity(new Intent(context, MainActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                            finish();
+                        }
+
                     }else{
                         Toast.makeText(context, "Email atau Password salah", Toast.LENGTH_SHORT).show();
                     }

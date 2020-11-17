@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
 import co.ocha.pratikum_progmob.remote.ApiInterface;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPrefManager = new SharedPrefed(this);
-        
+        ButterKnife.bind(this);
 
     }
 
