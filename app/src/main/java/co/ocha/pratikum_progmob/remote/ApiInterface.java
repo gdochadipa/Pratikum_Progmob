@@ -1,5 +1,6 @@
 package co.ocha.pratikum_progmob.remote;
 
+import co.ocha.pratikum_progmob.model.BookResponse;
 import co.ocha.pratikum_progmob.model.QueryResponse;
 import co.ocha.pratikum_progmob.model.RegisterResponse;
 import co.ocha.pratikum_progmob.model.TokenResponse;
@@ -38,4 +39,6 @@ public interface ApiInterface {
     @POST("api/logout")
     Call<TokenResponse> logout(@Header("Authorization") String token);
 
+    @GET("api/books")
+    Call<BookResponse> apiGetBook();
 }

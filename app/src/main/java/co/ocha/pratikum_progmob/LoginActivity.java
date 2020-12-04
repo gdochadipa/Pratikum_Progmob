@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
         if(sharedPrefed.getSPSudahLogin()){
             Log.d(TAG, "onResponse: Intent Now");
-            startActivity(new Intent(context, MainActivity.class)
+            startActivity(new Intent(context, BaseActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
             finish();
             progressDialog.dismiss();
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                             TokenResult token = response.body().getResult();
                             sharedPrefed.saveSPString(SharedPrefed.SP_TOKEN,"Bearer "+token.getToken());
                             sharedPrefed.saveSPBoolean(SharedPrefed.SP_SUDAH_LOGIN,true);
-                            startActivity(new Intent(context, MainActivity.class)
+                            startActivity(new Intent(context, BaseActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                             finish();
                         }
