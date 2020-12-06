@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import butterknife.OnClick;
+import co.ocha.pratikum_progmob.FirebaseConfig.RefreshFCMToken;
 import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
 
 public class BaseActivity extends AppCompatActivity {
@@ -50,7 +51,11 @@ public class BaseActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        RefreshFCMToken.getToken(getApplicationContext());
     }
+
+
 
     @OnClick(R.id.nav_logout)void onLogout(){
         sharedPrefManager.saveSPBoolean(SharedPrefed.SP_SUDAH_LOGIN,false);

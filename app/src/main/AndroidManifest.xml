@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="co.ocha.pratikum_progmob">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <service android:name=".FirebaseConfig.FirebaseServices"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <activity android:name=".BookDetailActivity"></activity>
         <activity
             android:name=".BaseActivity"
@@ -27,6 +34,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <!-- Icon pada notif -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_menu_slideshow" />
+
+        <!-- warna text notifikasi -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ public class SharedPrefed {
     public static final String SP_EMAIL = "spEmail";
     public static final String SP_PASS = "spPass";
     public static final String SP_TOKEN = "spToken";
+    public static final String SP_TOKEN_FCM = "spTokenFCM";
 
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
 
@@ -47,6 +48,10 @@ public class SharedPrefed {
 
     public String getSPToken(){
         return sp.getString(SP_TOKEN, "");
+    }
+
+    public String getSPTokenFCM(){
+        return sp.getString(SP_TOKEN_FCM, "");
     }
 
     public Boolean getSPSudahLogin(){

@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(context,response.body().getResult().toString() , Toast.LENGTH_SHORT).show();
                         }else{
                             TokenResult token = response.body().getResult();
+//                            sharedPrefed.saveSPString(SharedPrefed.SP_TOKEN,token.getToken());
                             sharedPrefed.saveSPString(SharedPrefed.SP_TOKEN,"Bearer "+token.getToken());
                             sharedPrefed.saveSPBoolean(SharedPrefed.SP_SUDAH_LOGIN,true);
                             startActivity(new Intent(context, BaseActivity.class)

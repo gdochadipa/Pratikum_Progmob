@@ -15,9 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
+import co.ocha.pratikum_progmob.BookDetailActivity;
 import co.ocha.pratikum_progmob.R;
 import co.ocha.pratikum_progmob.adapter.BookAdapter;
 import co.ocha.pratikum_progmob.model.BookModel;

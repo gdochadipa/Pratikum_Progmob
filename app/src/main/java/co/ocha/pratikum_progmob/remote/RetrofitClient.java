@@ -13,7 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static Retrofit retrofit;
-    private static final String base_url = "http://192.168.43.165:8000/";
+    private static final String base_url = "http://192.168.1.69:8000/";
+//    private static final String base_url = "http://192.168.43.165:8000/";
 
     public static Retrofit getClient(Context context){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

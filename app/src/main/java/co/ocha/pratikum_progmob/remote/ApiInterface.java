@@ -41,4 +41,11 @@ public interface ApiInterface {
 
     @GET("api/books")
     Call<BookResponse> apiGetBook();
+
+    @FormUrlEncoded
+    @POST("api/updateToken")
+    Call<TokenResponse> refreshFCMToken(
+            @Header("Authorization") String token,
+            @Field("fcm_token") String fcm_token
+    );
 }
