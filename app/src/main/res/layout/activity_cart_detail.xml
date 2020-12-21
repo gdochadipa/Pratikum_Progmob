@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <ImageView
+                    android:id="@+id/iv_cover"
+                    android:adjustViewBounds="true"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="2dp"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="book id"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Title"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/tv_writer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Writer"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Description"
+                    android:textSize="18sp"
+                    android:maxLines="2"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="6dp">
+                    <TextView
+                        android:id="@+id/lang_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Language : "
+                        android:textSize="18sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_language"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Language"
+                        android:textSize="18sp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="6dp">
+                    <TextView
+                        android:id="@+id/qty_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Quantity : "
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_qty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Qty"
+                        android:textSize="18sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="6dp">
+                    <TextView
+                        android:id="@+id/price_column_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Total : "
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/price_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Rp "
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Price "
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/slash_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="/"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_qty_in_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" 3"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/pcs_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" pcs"
+                        android:textSize="18sp"
+                        />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnCheckout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#ffffff"
+                    android:padding="10dp"
+                    android:text="Checkout"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
