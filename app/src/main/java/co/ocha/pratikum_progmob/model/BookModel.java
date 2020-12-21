@@ -4,6 +4,17 @@ public class BookModel {
     private int id, price, stock;
     private  String title, description,  writer, cover, language;
 
+    public BookModel(int id, String title, String description, String writer, String cover, String language, int price, int stock) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.writer = writer;
+        this.cover = cover;
+        this.language = language;
+        this.price = price;
+        this.stock = stock;
+    }
+
     public int getId() {
         return id;
     }

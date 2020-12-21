@@ -14,13 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <service android:name=".FirebaseConfig.FirebaseServices"
+        <activity android:name=".AddressActivity"></activity>
+        <activity android:name=".CartDetailActivity" />
+
+        <service
+            android:name=".FirebaseConfig.FirebaseServices"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".BookDetailActivity"></activity>
+
+        <activity android:name=".BookDetailActivity" />
         <activity
             android:name=".BaseActivity"
             android:label="@string/title_activity_base"
@@ -33,14 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-
-        <!-- Icon pada notif -->
+        <activity android:name=".MainActivity" /> <!-- Icon pada notif -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_menu_slideshow" />
-
-        <!-- warna text notifikasi -->
+            android:resource="@drawable/ic_menu_slideshow" /> <!-- warna text notifikasi -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />

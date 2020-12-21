@@ -1,9 +1,13 @@
 package co.ocha.pratikum_progmob.remote;
 
+import co.ocha.pratikum_progmob.model.AddressResponse;
 import co.ocha.pratikum_progmob.model.BookResponse;
-import co.ocha.pratikum_progmob.model.QueryResponse;
+import co.ocha.pratikum_progmob.model.AddCartResponse;
+import co.ocha.pratikum_progmob.model.CartResponse;
 import co.ocha.pratikum_progmob.model.RegisterResponse;
 import co.ocha.pratikum_progmob.model.TokenResponse;
+import co.ocha.pratikum_progmob.model.AddTransactionResponse;
+import co.ocha.pratikum_progmob.model.TransactionResponse;
 import co.ocha.pratikum_progmob.model.UserResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -43,9 +47,39 @@ public interface ApiInterface {
     Call<BookResponse> apiGetBook();
 
     @FormUrlEncoded
+    @POST("api/book/detail")
+    Call<BookResponse> getBookDetail(
+            @Field("id") int id
+    );
+
+    @GET("api/cart")
+    Call<CartResponse> getCart(@Header("Authorization") String token);
+
+    @GET("api/transaction")
+    Call<TransactionResponse> getTransaction(@Header("Authorization") String token);
+
+    @GET("api/address")
+    Call<AddressResponse> getAddress(@Header("Authorization") String token);
+
+    @FormUrlEncoded
     @POST("api/updateToken")
     Call<TokenResponse> refreshFCMToken(
             @Header("Authorization") String token,
             @Field("fcm_token") String fcm_token
+    );
+
+    @FormUrlEncoded
+    @POST("api/cart")
+    Call<AddCartResponse> addToCart(
+            @Header("Authorization") String token,
+            @Field("book_id") int book_id,
+            @Field("qty") int qty
+    );
+
+    @FormUrlEncoded
+    @POST("api/transaction")
+    Call<AddTransactionResponse> addTransaction(
+            @Header("Authorization") String token,
+            @Field("address_id") int address_id
     );
 }

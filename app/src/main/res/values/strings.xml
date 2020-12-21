@@ -24,4 +24,9 @@
     <string name="title_activity_book_detail">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string-array name="list_address">
+        <item>Ubud</item>
+        <item>Kedewatan</item>
+    </string-array>
 </resources>
