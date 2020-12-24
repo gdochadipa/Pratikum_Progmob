@@ -7,6 +7,7 @@ import co.ocha.pratikum_progmob.model.CartResponse;
 import co.ocha.pratikum_progmob.model.RegisterResponse;
 import co.ocha.pratikum_progmob.model.TokenResponse;
 import co.ocha.pratikum_progmob.model.AddTransactionResponse;
+import co.ocha.pratikum_progmob.model.TransactionDetailResponse;
 import co.ocha.pratikum_progmob.model.TransactionResponse;
 import co.ocha.pratikum_progmob.model.UserResponse;
 import retrofit2.Call;
@@ -77,9 +78,9 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
-    @POST("api/transaction")
-    Call<AddTransactionResponse> addTransaction(
+    @POST("api/transaction/detail")
+    Call<TransactionDetailResponse> getTransactionDetail(
             @Header("Authorization") String token,
-            @Field("address_id") int address_id
+            @Field("id") int id
     );
 }

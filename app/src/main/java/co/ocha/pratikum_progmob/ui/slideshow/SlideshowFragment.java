@@ -27,12 +27,14 @@ import java.util.List;
 
 import butterknife.OnClick;
 import co.ocha.pratikum_progmob.BaseActivity;
+import co.ocha.pratikum_progmob.BookDetailActivity;
 import co.ocha.pratikum_progmob.CartDetailActivity;
 import co.ocha.pratikum_progmob.LoginActivity;
 import co.ocha.pratikum_progmob.MainActivity;
 import co.ocha.pratikum_progmob.R;
 import co.ocha.pratikum_progmob.SQLite.DBCarts;
 import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
+import co.ocha.pratikum_progmob.TransactionDetailActivity;
 import co.ocha.pratikum_progmob.adapter.CartAdapter;
 import co.ocha.pratikum_progmob.adapter.TransactionAdapter;
 import co.ocha.pratikum_progmob.model.BookModel;
@@ -171,42 +173,10 @@ public class SlideshowFragment extends Fragment {
         listener = new TransactionAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position) {
-                /*int book_id = listData.get(position).getBook_id();
-
-                ApiInterface ardData = RetrofitClient.getClient(getContext()).create(ApiInterface.class);
-                Call<BookResponse> tampilData = ardData.getBookDetail(book_id);
-
-                tampilData.enqueue(new Callback<BookResponse>() {
-                    @Override
-                    public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
-                        listBook = response.body().getResult();
-                        if(response.code() == 200){
-                            Intent intent = new Intent(getContext(), CartDetailActivity.class);
-                            intent.putExtra("id", listData.get(position).getId());
-                            intent.putExtra("qty", listData.get(position).getQty());
-                            intent.putExtra("status", listData.get(position).getStatus());
-
-                            intent.putExtra("book_id", listBook.get(0).getId());
-                            intent.putExtra("book_title", listBook.get(0).getTitle());
-                            intent.putExtra("book_description", listBook.get(0).getDescription());
-                            intent.putExtra("book_writer", listBook.get(0).getWriter());
-                            intent.putExtra("book_cover", listBook.get(0).getCover());
-                            intent.putExtra("book_language", listBook.get(0).getLanguage());
-                            intent.putExtra("book_price", listBook.get(0).getPrice());
-                            intent.putExtra("book_stock", listBook.get(0).getStock());
-                            startActivity(intent);
-                        }
-
-                        pbData.setVisibility(View.INVISIBLE);
-                    }
-
-                    @Override
-                    public void onFailure(Call<BookResponse> call, Throwable t) {
-                        Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-
-                        pbData.setVisibility(View.INVISIBLE);
-                    }
-                });*/
+                Intent intent = new Intent(getContext(), TransactionDetailActivity.class);
+                intent.putExtra("id", listData.get(position).getId());
+                intent.putExtra("address", listData.get(position).getAddress_id());
+                startActivity(intent);
             }
         };
     }

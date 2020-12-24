@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddressActivity"></activity>
+        <activity android:name=".TransactionDetailBookActivity"></activity>
+        <activity android:name=".TransactionDetailActivity" />
+        <activity android:name=".AddressActivity" />
         <activity android:name=".CartDetailActivity" />
 
         <service

@@ -10,6 +10,7 @@ public class SharedPrefed {
     public static final String SP_LOGIN_APP = "spLoginApp";
     public static final String SP_NAMA = "spNama";
     public static final String SP_EMAIL = "spEmail";
+    public static final String SP_PHOTO = "spPhoto";
     public static final String SP_PASS = "spPass";
     public static final String SP_TOKEN = "spToken";
     public static final String SP_TOKEN_FCM = "spTokenFCM";
@@ -40,6 +41,10 @@ public class SharedPrefed {
 
     public String getSPEmail(){
         return sp.getString(SP_EMAIL, "");
+    }
+
+    public String getSPPhoto(){
+        return sp.getString(SP_PHOTO, "");
     }
 
     public String getSPPass(){

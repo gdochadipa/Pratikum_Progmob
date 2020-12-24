@@ -22,6 +22,9 @@ public class UserResult {
 	@SerializedName("email")
 	private String email;
 
+	@SerializedName("photo_profile")
+	private String photo_profile;
+
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
 	}
@@ -68,5 +71,13 @@ public class UserResult {
 
 	public String getEmail(){
 		return email;
+	}
+
+	public String getPhoto_profile() {
+		return photo_profile;
+	}
+
+	public void setPhoto_profile(String photo_profile) {
+		this.photo_profile = photo_profile;
 	}
 }

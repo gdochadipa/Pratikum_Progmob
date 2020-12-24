@@ -22,4 +22,10 @@
         android:name="co.ocha.pratikum_progmob.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="co.ocha.pratikum_progmob.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_slideshow" />
 </navigation>
