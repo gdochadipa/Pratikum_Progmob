@@ -63,6 +63,16 @@ public interface ApiInterface {
     Call<AddressResponse> getAddress(@Header("Authorization") String token);
 
     @FormUrlEncoded
+    @POST("api/address")
+    Call<AddCartResponse> addAddress(
+            @Header("Authorization") String token,
+            @Field("address") String address,
+            @Field("district") String district,
+            @Field("province") String province,
+            @Field("status") int status
+    );
+
+    @FormUrlEncoded
     @POST("api/updateToken")
     Call<TokenResponse> refreshFCMToken(
             @Header("Authorization") String token,

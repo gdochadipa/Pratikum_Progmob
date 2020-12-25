@@ -3,6 +3,7 @@ package co.ocha.pratikum_progmob;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +52,6 @@ public class AddressActivity extends AppCompatActivity {
                 String selectedName = parent.getItemAtPosition(position).toString();
                 addressId = listData.get(position).getId();
                 //Toast.makeText(getApplicationContext(), String.valueOf(addressId), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), selectedName + " selected" , Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -103,14 +103,22 @@ public class AddressActivity extends AppCompatActivity {
                 listData = response.body().getResult();
                 Log.d("myTag", listData.toString());
 
+                if (listData.size() == 0){
+                    Toast.makeText(getApplicationContext(), "You dont have an address to select, add your address in main menu!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
+                    startActivity(intent);
+                }
+
                 if (response.isSuccessful()) {
                     List<String> listSpinner = new ArrayList<String>();
                     for (int i = 0; i < listData.size(); i++){
                         listSpinner.add(listData.get(i).getAddress());
                     }
 
+                    /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                            android.R.layout.simple_spinner_item, listSpinner);*/
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                            android.R.layout.simple_spinner_item, listSpinner);
+                            R.layout.custom_spinner_item, listSpinner);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerAddress.setAdapter(adapter);
                 } else {

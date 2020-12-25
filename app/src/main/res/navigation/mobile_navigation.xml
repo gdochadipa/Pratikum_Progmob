@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
+        android:id="@+id/nav_address"
+        android:name="co.ocha.pratikum_progmob.ui.add_address.AddAddressFragment"
+        android:label="Add Address"
+        tools:layout="@layout/fragment_add_address" />
+
+    <fragment
         android:id="@+id/nav_profile"
         android:name="co.ocha.pratikum_progmob.ui.profile.ProfileFragment"
         android:label="Profile Edit"

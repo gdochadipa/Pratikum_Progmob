@@ -103,6 +103,11 @@ public class GalleryFragment extends Fragment {
             public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
 
                 listData = response.body().getResult();
+
+                if (listData.size() == 0){
+                    Toast.makeText(getActivity(), "Your cart is empty, Lets add some!", Toast.LENGTH_SHORT).show();
+                }
+
                 Log.d("myTag", listData.toString());
 
                 // SQLite Teritory

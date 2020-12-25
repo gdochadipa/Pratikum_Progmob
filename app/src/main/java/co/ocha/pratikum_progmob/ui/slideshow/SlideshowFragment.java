@@ -113,6 +113,10 @@ public class SlideshowFragment extends Fragment {
                 listData = response.body().getResult();
                 Log.d("myTag", listData.toString());
 
+                if (listData.size() == 0){
+                    Toast.makeText(getActivity(), "Your dont have transaction yet, Lets make some!", Toast.LENGTH_SHORT).show();
+                }
+
                 // SQLite Teritory
                 /*dbCarts = new DBCarts(getContext());
                 SQLiteDatabase create = dbCarts.getWritableDatabase();

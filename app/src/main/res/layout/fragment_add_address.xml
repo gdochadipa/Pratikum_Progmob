@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#0087EE"
     android:padding="10dp"
-    tools:context=".RegisterActivity">
+    tools:context=".ui.add_address.AddAddressFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,64 +23,53 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif"
-            android:text="REGISTER"
+            android:text="Add Address"
             android:textColor="#fff"
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_ractangle_edittxt"
-            android:hint="Name"
-            android:inputType="textEmailAddress"
+            android:hint="Address"
+            android:inputType="text"
             android:padding="8dp"
             android:textColor="#333"
             android:textColorHint="#555" />
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etDistrict"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_ractangle_edittxt"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+            android:hint="District"
+            android:inputType="text"
             android:padding="8dp"
             android:textColor="#333"
             android:textColorHint="#555" />
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etProvince"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_ractangle_edittxt"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="8dp"
-            android:textColor="#333"
-            android:textColorHint="#555" />
-        <EditText
-            android:id="@+id/et_c_Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_ractangle_edittxt"
-            android:hint="Re-type Password"
-            android:inputType="textPassword"
+            android:hint="Province"
+            android:inputType="text"
             android:padding="8dp"
             android:textColor="#333"
             android:textColorHint="#555" />
 
         <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/btnAddAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/bd_rectangle_button"
-            android:text="REGISTER"
+            android:text="Add"
             android:textColor="#FFF"
             android:textStyle="bold" />
 
