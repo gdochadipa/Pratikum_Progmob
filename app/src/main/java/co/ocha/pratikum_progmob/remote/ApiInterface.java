@@ -1,5 +1,7 @@
 package co.ocha.pratikum_progmob.remote;
 
+import android.content.SyncRequest;
+
 import co.ocha.pratikum_progmob.model.AddressResponse;
 import co.ocha.pratikum_progmob.model.BookResponse;
 import co.ocha.pratikum_progmob.model.AddCartResponse;
@@ -107,5 +109,21 @@ public interface ApiInterface {
     Call<AddCartResponse> deleteCart(
             @Path("id") int id,
             @Header("Authorization") String token
+    );
+
+    @FormUrlEncoded
+    @POST("api/user/update/profile")
+    Call<AddCartResponse> editProfileUser(
+            @Header("Authorization") String token,
+            @Field("photo_profile") String photo_profile
+    );
+
+    @FormUrlEncoded
+    @POST("api/user/update")
+    Call<AddCartResponse> editUser(
+            @Header("Authorization") String token,
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("photo_profile") String photo_profile
     );
 }

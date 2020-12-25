@@ -19,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.core.view.GravityCompat;
@@ -98,6 +99,14 @@ public class BaseActivity extends AppCompatActivity {
         tvNavNamaUser = navHeaderView.findViewById(R.id.profileName);
         tvNavEmailUser = navHeaderView.findViewById(R.id.profileEmail);
         ivNavFotoUser = navHeaderView.findViewById(R.id.profileImage);
+        Intent intent = new Intent(this, EditProfileActivity.class);
+
+        tvNavNamaUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -117,7 +126,12 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
+
+
+
 
     /*@OnClick(R.id.nav_logout)void onLogout(){
         sharedPrefManager.saveSPBoolean(SharedPrefed.SP_SUDAH_LOGIN,false);
@@ -155,7 +169,7 @@ public class BaseActivity extends AppCompatActivity {
                 fotoUser = response.body().getResult().getPhoto_profile();
                 sharedPrefed.saveSPString(SharedPrefed.SP_NAMA, namaUser);
                 sharedPrefed.saveSPString(SharedPrefed.SP_EMAIL, emailUser);
-                sharedPrefed.saveSPString(SharedPrefed.SP_PHOTO, emailUser);
+                sharedPrefed.saveSPString(SharedPrefed.SP_PHOTO, fotoUser);
                 tvNavNamaUser.setText(namaUser);
                 tvNavEmailUser.setText(emailUser);
                 //Toast.makeText(getApplicationContext(), fotoUser, Toast.LENGTH_SHORT).show();
@@ -197,4 +211,5 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
     }
+
 }

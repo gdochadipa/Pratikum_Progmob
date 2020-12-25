@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             txtEmail.setError("Hanya boleh memasukan huruf");
         }
 
-        if(txtPassword.getText().toString().length()<=6){
+        if(txtPassword.getText().toString().length()<6){
             valid = false;
             txtPassword.requestFocus();
             txtPassword.setError("Password harus 6 karakter lebih");

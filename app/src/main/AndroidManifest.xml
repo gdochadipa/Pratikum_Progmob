@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TransactionDetailBookActivity"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".TransactionDetailBookActivity" />
         <activity android:name=".TransactionDetailActivity" />
         <activity android:name=".AddressActivity" />
         <activity android:name=".CartDetailActivity" />
