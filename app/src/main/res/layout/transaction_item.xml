@@ -22,7 +22,7 @@
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/cartgreen" />
+                android:src="@drawable/bill" />
 
             <LinearLayout
                 android:layout_width="match_parent"

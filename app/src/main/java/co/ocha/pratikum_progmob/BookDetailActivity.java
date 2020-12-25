@@ -3,6 +3,7 @@ package co.ocha.pratikum_progmob;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -160,6 +161,8 @@ public class BookDetailActivity extends AppCompatActivity {
             public void onResponse(Call<AddCartResponse> call, Response<AddCartResponse> response) {
                 if(response.code() == 200){
                     Toast.makeText(getApplicationContext()," Successfully added to cart!",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
+                    startActivity(intent);
                 }
             }
 
