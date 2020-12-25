@@ -1,10 +1,10 @@
 package co.ocha.pratikum_progmob.model;
 
 public class TransactionModel {
-    private int id, user_id, address_id, total;
-    private  String timeout, status;
+    private int id, user_id, total;
+    private  String timeout, status, address_id;
 
-    public TransactionModel(int id, int user_id, int address_id, int total, String timeout, String status) {
+    public TransactionModel(int id, int user_id, String address_id, int total, String timeout, String status) {
         this.id = id;
         this.user_id = user_id;
         this.address_id = address_id;
@@ -29,11 +29,11 @@ public class TransactionModel {
         this.user_id = user_id;
     }
 
-    public int getAddress_id() {
+    public String getAddress_id() {
         return address_id;
     }
 
-    public void setAddress_id(int address_id) {
+    public void setAddress_id(String address_id) {
         this.address_id = address_id;
     }
 

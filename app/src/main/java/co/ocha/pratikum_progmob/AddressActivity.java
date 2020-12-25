@@ -73,19 +73,18 @@ public class AddressActivity extends AppCompatActivity {
         String user_token = sharedPrefed.getSPToken();
         //Toast.makeText(getApplicationContext(), user_token, Toast.LENGTH_LONG).show();
 
-        Call<AddTransactionResponse> postTransaction = apiInterface.addTransaction(
-                user_token,
-                addressId);
-        postTransaction.enqueue(new Callback<AddTransactionResponse>() {
+        Call<AddressResponse> postTransaction = apiInterface.getAddress(
+                user_token);
+        postTransaction.enqueue(new Callback<AddressResponse>() {
             @Override
-            public void onResponse(Call<AddTransactionResponse> call, Response<AddTransactionResponse> response) {
+            public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
                 if(response.code() == 200){
                     Toast.makeText(getApplicationContext()," Successfully purchased!",Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<AddTransactionResponse> call, Throwable t) {
+            public void onFailure(Call<AddressResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
