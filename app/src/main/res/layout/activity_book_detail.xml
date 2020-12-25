@@ -52,7 +52,6 @@
                 android:layout_height="match_parent"
                 android:text="Description"
                 android:textSize="18sp"
-                android:maxLines="2"
                 />
 
             <LinearLayout

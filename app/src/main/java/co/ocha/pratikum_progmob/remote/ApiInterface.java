@@ -93,4 +93,11 @@ public interface ApiInterface {
             @Header("Authorization") String token,
             @Field("id") int id
     );
+
+    @FormUrlEncoded
+    @POST("api/transaction")
+    Call<AddTransactionResponse> addTransaction(
+            @Header("Authorization") String token,
+            @Field("address_id") int address_id
+    );
 }
