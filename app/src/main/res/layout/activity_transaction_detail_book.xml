@@ -43,12 +43,14 @@
                     android:text="Title"
                     android:textSize="22sp"
                     android:textStyle="bold"
+                    android:textColor="@color/black_sabbath"
                     />
                 <TextView
                     android:id="@+id/tv_writer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Writer"
+                    android:textColor="@color/black_sabbath"
                     android:textSize="18sp"
                     />
                 <TextView
@@ -70,6 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Language : "
+                        android:drawableLeft="@drawable/ic_baseline_language_24"
                         android:textSize="18sp"
                         />
 
@@ -142,6 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Price "
+                        android:textColor="@color/colorPrimary"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         />
