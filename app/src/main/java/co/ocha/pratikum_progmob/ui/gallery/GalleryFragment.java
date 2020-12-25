@@ -104,16 +104,19 @@ public class GalleryFragment extends Fragment {
 
                 listData = response.body().getResult();
 
-                if (listData.size() == 0){
-                    Toast.makeText(getActivity(), "Your cart is empty, Lets add some!", Toast.LENGTH_SHORT).show();
-                }
-
                 Log.d("myTag", listData.toString());
 
-                // SQLite Teritory
+                // SQLite
                 dbCarts = new DBCarts(getContext());
                 SQLiteDatabase create = dbCarts.getWritableDatabase();
                 ContentValues values = new ContentValues();
+
+                if (listData.size() == 0){
+                    Toast.makeText(getActivity(), "Your cart is empty, Lets add some!", Toast.LENGTH_SHORT).show();
+
+                    SQLiteDatabase deleteData = dbCarts.getWritableDatabase();
+                    deleteData.delete(DBCarts.MyColumns.NamaTabel, null, null);
+                }
 
                 for(int i = 0; i < listData.size(); i++){
                     Log.d("myTag", listData.get(i).getStatus());
@@ -149,6 +152,7 @@ public class GalleryFragment extends Fragment {
     protected void getDataSQLite(){
         //Mengambil Repository dengan Mode Membaca
         listData = new ArrayList<>();
+        dbCarts = new DBCarts(getContext());
         SQLiteDatabase ReadData = dbCarts.getReadableDatabase();
         Cursor cursor = ReadData.rawQuery("SELECT * FROM "+ DBCarts.MyColumns.NamaTabel,null);
 

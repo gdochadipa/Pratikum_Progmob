@@ -72,7 +72,7 @@
                         android:id="@+id/pricetxt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Total : "
+                        android:text="Price per Item : "
                         android:textSize="18sp"
                         />
 

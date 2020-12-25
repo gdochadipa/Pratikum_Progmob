@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
 import co.ocha.pratikum_progmob.model.AddCartResponse;
+import co.ocha.pratikum_progmob.model.AddTransactionResponse;
 import co.ocha.pratikum_progmob.model.AddressResponse;
 import co.ocha.pratikum_progmob.remote.ApiInterface;
 import co.ocha.pratikum_progmob.remote.RetrofitClient;
@@ -27,6 +28,8 @@ public class CartDetailActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     Context context;
     SharedPrefed sharedPrefed;
+
+    int cart_id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,7 @@ public class CartDetailActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             id = extras.getInt("book_id");
+            cart_id = extras.getInt("id");
             title = extras.getString("book_title");
             cover = extras.getString("book_cover");
             writer = extras.getString("book_writer");
@@ -81,10 +85,17 @@ public class CartDetailActivity extends AppCompatActivity {
         tvPrice.setText(String.valueOf(total_price));
 
         Button btn1 = (Button) findViewById(R.id.btnCheckout);
+        Button btn2 = (Button) findViewById(R.id.btnRemoveCart);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     createCart();
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeCart();
             }
         });
     }
@@ -92,5 +103,29 @@ public class CartDetailActivity extends AppCompatActivity {
     private void createCart(){
         Intent intent = new Intent(getApplicationContext(), AddressActivity.class);
         startActivity(intent);
+    }
+
+    private void removeCart(){
+        //Toast.makeText(getApplicationContext(), String.valueOf(cart_id), Toast.LENGTH_SHORT).show();
+        String user_token = sharedPrefed.getSPToken();
+
+        Call<AddCartResponse> postTransaction = apiInterface.deleteCart(
+                cart_id,
+                user_token);
+        postTransaction.enqueue(new Callback<AddCartResponse>() {
+            @Override
+            public void onResponse(Call<AddCartResponse> call, Response<AddCartResponse> response) {
+                if(response.code() == 200){
+                    Toast.makeText(getApplicationContext()," Successfully deleted!",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddCartResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

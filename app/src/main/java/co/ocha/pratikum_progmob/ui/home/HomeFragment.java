@@ -25,6 +25,7 @@ import java.util.List;
 import co.ocha.pratikum_progmob.BookDetailActivity;
 import co.ocha.pratikum_progmob.R;
 import co.ocha.pratikum_progmob.SQLite.DBBooks;
+import co.ocha.pratikum_progmob.SQLite.DBCarts;
 import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
 import co.ocha.pratikum_progmob.adapter.BookAdapter;
 import co.ocha.pratikum_progmob.model.BookModel;
@@ -100,6 +101,13 @@ public class HomeFragment extends Fragment {
                 SQLiteDatabase create = dbBooks.getWritableDatabase();
                 ContentValues values = new ContentValues();
 
+                if (listData.size() == 0){
+                    Toast.makeText(getActivity(), "Your cart is empty, Lets add some!", Toast.LENGTH_SHORT).show();
+
+                    SQLiteDatabase deleteData = dbBooks.getWritableDatabase();
+                    deleteData.delete(DBBooks.MyColumns.NamaTabel, null, null);
+                }
+
                 for(int i = 0; i < listData.size(); i++){
                     values.put(DBBooks.MyColumns.id, listData.get(i).getId());
                     values.put(DBBooks.MyColumns.title, listData.get(i).getTitle());
@@ -123,7 +131,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<BookResponse> call, Throwable t) {
                 //Toast.makeText(getActivity(), "Gagal Menghubungi server", Toast.LENGTH_SHORT).show();
-
                 getDataSQLite();
 
                 adData = new BookAdapter(getActivity(), listData, listener);
@@ -138,6 +145,7 @@ public class HomeFragment extends Fragment {
     protected void getDataSQLite(){
         //Mengambil Repository dengan Mode Membaca
         listData = new ArrayList<>();
+        dbBooks = new DBBooks(getContext());
         SQLiteDatabase ReadData = dbBooks.getReadableDatabase();
         Cursor cursor = ReadData.rawQuery("SELECT * FROM "+ DBBooks.MyColumns.NamaTabel,null);
 

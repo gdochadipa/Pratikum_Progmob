@@ -11,11 +11,13 @@ import co.ocha.pratikum_progmob.model.TransactionDetailResponse;
 import co.ocha.pratikum_progmob.model.TransactionResponse;
 import co.ocha.pratikum_progmob.model.UserResponse;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 
@@ -99,5 +101,11 @@ public interface ApiInterface {
     Call<AddTransactionResponse> addTransaction(
             @Header("Authorization") String token,
             @Field("address_id") int address_id
+    );
+
+    @DELETE("api/cart/{id}")
+    Call<AddCartResponse> deleteCart(
+            @Path("id") int id,
+            @Header("Authorization") String token
     );
 }

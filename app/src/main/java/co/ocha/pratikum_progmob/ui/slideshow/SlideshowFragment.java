@@ -33,6 +33,7 @@ import co.ocha.pratikum_progmob.LoginActivity;
 import co.ocha.pratikum_progmob.MainActivity;
 import co.ocha.pratikum_progmob.R;
 import co.ocha.pratikum_progmob.SQLite.DBCarts;
+import co.ocha.pratikum_progmob.SQLite.DBTransactions;
 import co.ocha.pratikum_progmob.SharedPrefed.SharedPrefed;
 import co.ocha.pratikum_progmob.TransactionDetailActivity;
 import co.ocha.pratikum_progmob.adapter.CartAdapter;
@@ -62,7 +63,7 @@ public class SlideshowFragment extends Fragment {
     private ProgressBar pbData;
     private TransactionAdapter.RecyclerViewClickListener listener;
     SharedPrefed sharedPrefed;
-    private DBCarts dbCarts;
+    private DBTransactions dbTransactions;
     ApiInterface apiInterface;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -113,24 +114,28 @@ public class SlideshowFragment extends Fragment {
                 listData = response.body().getResult();
                 Log.d("myTag", listData.toString());
 
+                // SQLite Teritory
+                dbTransactions = new DBTransactions(getContext());
+                SQLiteDatabase create = dbTransactions.getWritableDatabase();
+                ContentValues values = new ContentValues();
+
                 if (listData.size() == 0){
                     Toast.makeText(getActivity(), "Your dont have transaction yet, Lets make some!", Toast.LENGTH_SHORT).show();
-                }
 
-                // SQLite Teritory
-                /*dbCarts = new DBCarts(getContext());
-                SQLiteDatabase create = dbCarts.getWritableDatabase();
-                ContentValues values = new ContentValues();
+                    SQLiteDatabase deleteData = dbTransactions.getWritableDatabase();
+                    deleteData.delete(DBTransactions.MyColumns.NamaTabel, null, null);
+                }
 
                 for(int i = 0; i < listData.size(); i++){
                     Log.d("myTag", listData.get(i).getStatus());
-                    values.put(DBCarts.MyColumns.id, listData.get(i).getId());
-                    values.put(DBCarts.MyColumns.user_id, listData.get(i).getUser_id());
-                    values.put(DBCarts.MyColumns.book_id, listData.get(i).getBook_id());
-                    values.put(DBCarts.MyColumns.qty, listData.get(i).getQty());
-                    values.put(DBCarts.MyColumns.status, listData.get(i).getStatus());
-                    create.insert(DBCarts.MyColumns.NamaTabel, null, values);
-                }*/
+                    values.put(DBTransactions.MyColumns.id, listData.get(i).getId());
+                    values.put(DBTransactions.MyColumns.user_id, listData.get(i).getUser_id());
+                    values.put(DBTransactions.MyColumns.address_id, listData.get(i).getAddress_id());
+                    values.put(DBTransactions.MyColumns.total, listData.get(i).getTotal());
+                    values.put(DBTransactions.MyColumns.timeout, listData.get(i).getTimeout());
+                    values.put(DBTransactions.MyColumns.status, listData.get(i).getStatus());
+                    create.insert(DBTransactions.MyColumns.NamaTabel, null, values);
+                }
 
                 // Adapter Teritory
                 adData = new TransactionAdapter(getActivity(), listData, listener);
@@ -142,22 +147,23 @@ public class SlideshowFragment extends Fragment {
 
             @Override
             public void onFailure(Call<TransactionResponse> call, Throwable t) {
-                //getDataSQLite();
+                getDataSQLite();
 
-                /*adData = new CartAdapter(getActivity(), listData, listener);
+                adData = new TransactionAdapter(getActivity(), listData, listener);
                 rvData.setAdapter(adData);
-                adData.notifyDataSetChanged();*/
+                adData.notifyDataSetChanged();
 
                 pbData.setVisibility(View.INVISIBLE);
             }
         });
     }
 
-    /*protected void getDataSQLite(){
+    protected void getDataSQLite(){
         //Mengambil Repository dengan Mode Membaca
         listData = new ArrayList<>();
-        SQLiteDatabase ReadData = dbCarts.getReadableDatabase();
-        Cursor cursor = ReadData.rawQuery("SELECT * FROM "+ DBCarts.MyColumns.NamaTabel,null);
+        dbTransactions = new DBTransactions(getContext());
+        SQLiteDatabase ReadData = dbTransactions.getReadableDatabase();
+        Cursor cursor = ReadData.rawQuery("SELECT * FROM "+ DBTransactions.MyColumns.NamaTabel,null);
 
         cursor.moveToFirst();//Memulai Cursor pada Posisi Awal
 
@@ -165,13 +171,15 @@ public class SlideshowFragment extends Fragment {
         for(int count=0; count < cursor.getCount(); count++){
             cursor.moveToPosition(count);//Berpindah Posisi dari no index 0 hingga no index terakhir
 
-            listData.add(new CartModel(cursor.getInt(0),
+            listData.add(new TransactionModel(cursor.getInt(0),
                     cursor.getInt(1),
-                    cursor.getInt(2),
+                    cursor.getString(2),
                     cursor.getInt(3),
-                    cursor.getString(4)));
+                    cursor.getString(4),
+                    cursor.getString(5)
+                    ));
         }
-    }*/
+    }
 
     private void setOnClickListener() {
         listener = new TransactionAdapter.RecyclerViewClickListener() {
