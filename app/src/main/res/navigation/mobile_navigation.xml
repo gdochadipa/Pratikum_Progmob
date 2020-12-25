@@ -8,24 +8,24 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="co.ocha.pratikum_progmob.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Books"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="co.ocha.pratikum_progmob.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="My Cart"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="co.ocha.pratikum_progmob.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="My Transaction"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_profile"
         android:name="co.ocha.pratikum_progmob.ui.profile.ProfileFragment"
-        android:label="Profile"
+        android:label="Profile Edit"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
