@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bookstore</string>
+    <string name="app_name">Take a Book</string>
     <string name="title_activity_user_login">UserLoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
